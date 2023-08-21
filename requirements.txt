@@ -1,0 +1,6 @@
+flask==2.3.2
+Jinja2
+numpy==1.25.0
+scikit-learn==1.2.2
+matplotlib==3.7.1
+
