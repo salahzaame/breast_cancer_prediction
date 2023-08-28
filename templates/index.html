@@ -1,125 +1,56 @@
 <!DOCTYPE html>
 <html >
-<!--From https://codepen.io/frytyler/pen/EGdtg-->
+
 <head>
   <meta charset="UTF-8">
   <title>ML API</title>
-  <!-- <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'> -->
-  
+  <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css') }}">
 </head>
 
 <body>
  <div class="login">
-	<h1>Breast Cancer Prediction</h1>
+	
 
      <!-- Main Input For Receiving Query to our ML 
       Action is where the data is sent ,in our case it's predict page .
       If action is Omitted , it assumed to be the current page  
     -->
-
+<div class="form">
+  <div class="title">Breast Cancer Prediction</div>
+  <div class="subtitle">Fill the inputs carefully!</div>
     <form method="post" action="{{ url_for('predict')}}">
-        
-        <label for="radius_mean">radius_mean</label>
-        <input type="text" name="radius_mean" id="radius_mean"><br>
-        
-        <label for="texture_mean">texture_mean</label>
-        <input type="text" name="texture_mean" id="texture_mean"><br>
-        
-        <label for="perimeter_mean">perimeter_mean</label>
-        <input type="text" name="perimeter_mean" id="perimeter_mean"><br>
-        
-        <label for="area_mean">area_mean</label>
-        <input type="text" name="area_mean" id="area_mean"><br>
-        
-        <!-- <label for="smoothness_mean">smoothness_mean</label>
-        <input type="text" name="smoothness_mean" id="smoothness_mean"><br>
-        
-        <label for="compactness_mean">compactness_mean</label>
-        <input type="text" name="compactness_mean" id="compactness_mean"><br>
-        
-        <label for="concavity_mean">concavity_mean</label>
-        <input type="text" name="concavity_mean" id="concavity_mean"><br>
-        
-        <label for="concave_points_mean">concave_points_mean</label>
-        <input type="text" name="concave_points_mean" id="concave_points_mean"><br>
-        
-        <label for="symmetry_mean">symmetry_mean</label>
-        <input type="text" name="symmetry_mean" id="symmetry_mean"><br>
-        
-        <label for="fractal_dimension_mean">fractal_dimension_mean</label>
-        <input type="text" name="fractal_dimension_mean" id="fractal_dimension_mean"><br>
-        
-        <label for="radius_se">radius_se</label>
-        <input type="text" name="radius_se" id="radius_se"><br>
-        
-        <label for="texture_se">texture_se</label>
-        <input type="text" name="texture_se" id="texture_se"><br>
-        
-        <label for="perimeter_se">perimeter_se</label>
-        <input type="text" name="perimeter_se" id="perimeter_se"><br>
-        
-        <label for="area_se">area_se</label>
-        <input type="text" name="area_se" id="area_se"><br>
-        
-        <label for="smoothness_se">smoothness_se</label>
-        <input type="text" name="smoothness_se" id="smoothness_se"><br>
-        
-        <label for="compactness_se">compactness_se</label>
-        <input type="text" name="compactness_se" id="compactness_se"><br>
-        
-        <label for="concavity_se">concavity_se</label>
-        <input type="text" name="concavity_se" id="concavity_se"><br>
-        
-        <label for="concave_points_se">concave_points_se</label>
-        <input type="text" name="concave_points_se" id="concave_points_se"><br>
-        
-        <label for="symmetry_se">symmetry_se</label>
-        <input type="text" name="symmetry_se" id="symmetry_se"><br>
-        
-        <label for="fractal_dimension_se">fractal_dimension_se</label>
-        <input type="text" name="fractal_dimension_se" id="fractal_dimension_se"><br>
-        
-        <label for="radius_worst">radius_worst</label>
-        <input type="text" name="radius_worst" id="radius_worst"><br>
-        
-        <label for="texture_worst">texture_worst</label>
-        <input type="text" name="texture_worst" id="texture_worst"><br>
-        
-        <label for="perimeter_worst">perimeter_worst</label>
-        <input type="text" name="perimeter_worst" id="perimeter_worst"><br>
-        
-        <label for="area_worst">area_worst</label>
-        <input type="text" name="area_worst" id="area_worst"><br>
-        
-        <label for="smoothness_worst">smoothness_worst</label>
-        <input type="text" name="smoothness_worst" id="smoothness_worst"><br>
-        
-        <label for="compactness_worst">compactness_worst</label>
-        <input type="text" name="compactness_worst" id="compactness_worst"><br>
-        
-        <label for="concavity_worst">concavity_worst</label>
-        <input type="text" name="concavity_worst" id="concavity_worst"><br>
-        
-        <label for="concave_points_worst">concave_points_worst</label>
-        <input type="text" name="concave_points_worst" id="concave_points_worst"><br>
-        
-        <label for="symmetry_worst">symmetry_worst</label>
-        <input type="text" name="symmetry_worst" id="symmetry_worst"><br>
-        
-        <label for="fractal_dimension_worst">fractal_dimension_worst</label>
-        <input type="text" name="fractal_dimension_worst" id="fractal_dimension_worst"><br> -->
-    
-        <button type="submit">Predict</button>
+
+      <div class="input-container ic1">
+        <input  class="input" type="text" placeholder=" "  name="radius_mean"/>
+        <div class="cut"></div>
+        <label for="radius_mean" class="placeholder">radius_mean </label>
+      </div>
+
+      <div class="input-container ic2">
+        <input id="perimeter_mean" class="input" type="text" placeholder=" " name="perimeter_mean"/>
+        <div class="cut"></div>
+        <label for="perimeter_mean" class="placeholder">perimeter_mean </label>
+      </div>
+
+      <div class="input-container ic2">
+        <input id="area_mean" class="input" type="text" placeholder=" " name="area_mean" />
+        <div class="cut"></div>
+        <label for="area_mean" class="placeholder">area_mean </label>
+      </div>
+
+      <div class="input-container ic2">
+        <input id="texture_mean" class="input" type="text" placeholder=" " name="texture_mean" />
+        <div class="cut"></div>
+        <label for="texture_mean" class="placeholder">texture_mean </label>
+      </div>
+      
+        <button type="submit" class="submit" >Predict</button>
     </form>
-    
+  </div class="prediction"> 
     {% if prediction_text %}
     <h2>{{ prediction_text }}</h2>
     {% endif %}
  </div>
-
 
 </body>
 </html>
